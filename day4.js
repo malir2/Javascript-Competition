@@ -21,11 +21,14 @@ for (let number = 1; number <= 10; number++) {
 
 // Task 3: Program to calculate the sum from 1 to 10
 let number = 1;
+let count = 10;
 
-while (number <= 10) {
-  console.log(number + number);
-  number++;
+while (count >= 1) {
+  number += count;
+  count--;
 }
+
+console.log(number);
 
 // Task 4: Print numbers from 10 to 1
 
