@@ -20,7 +20,7 @@ for (let number = 1; number <= 10; number++) {
 // Activity 2: While Loop
 
 // Task 3: Program to calculate the sum from 1 to 10
-let number = 1;
+let number = 0;
 let count = 10;
 
 while (count >= 1) {
