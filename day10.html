@@ -1,0 +1,177 @@
+// Day 10: Event Handling
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .image-container{
+            border: 2px solid red;
+        }
+
+        .box{
+            width: 200px;
+            height: 200px;
+            border: 2px solid black;
+            background-color: aqua;
+            margin-top: 20px;
+        }
+
+        input{
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        #form{
+            border: 2px olid black;
+            margin-top: 20px;
+        }
+
+        button{
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .visible{
+            visibility: hidden;
+        }
+
+    </style>
+</head>
+<body>
+    <p class="paragraph1">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci unde mollitia minus quasi minima quod quae ad nisi distinctio reprehenderit.
+    </p>
+
+    <div class="image-container" >
+        <img id="image" src="https://images.pexels.com/photos/26775381/pexels-photo-26775381/free-photo-of-black-and-white-photograph-of-sand-dunes-in-the-desert.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="Image">
+        <button id="image-button">Hide Image</button>
+    </div>
+
+    <div class="box">
+
+    </div>
+
+    <form action="">
+        <input type="text" value="" id="input" placeholder="Key Down">
+        <input type="text" value="" id="input2" placeholder="Key Up">
+    </form>
+
+    <form action="" id="form">
+        <input type="text" value="" id="input3" placeholder="Enter a value">
+        <input type="submit" value="Submit">
+    </form>
+
+    <h2>Click any Li to print it's value to the console</h2>
+    <ul>
+        <li>Yellow</li>
+        <li>Blue</li>
+        <li>Red</li>
+        <li>Green</li>
+    </ul>
+</body>
+<script>
+// Activity 1: Basic Event Handling
+
+// Task 1: Add a click event listener to a button that changes the text content of a paragraph
+
+const paragraph1 = document.querySelector(".paragraph1");
+
+paragraph1.addEventListener("click", (e)=>{
+    console.log(e.target)
+    const newText = "Here is the new content of paragraph 1.";
+
+   e.target.innerText = newText;
+    
+})
+
+// Task 2: Add a double-click event listener to an image that toggle its visibility
+
+const image = document.querySelector("#image");
+const button  = document.querySelector("#image-button");
+
+button.addEventListener("dblclick", (e)=>{
+    if (!(image.classList.add("visible"))) {
+        image.classList.add("visible");
+        button.innerText = "Hide Image";
+    }
+    else {
+        image.classList.remove("visible");
+        button.innerText = "Show Image";
+    }
+    // image.classList.toggle("visible");
+})
+
+// Activity 2: Mouse Events
+
+// Task 3: Add a mouseover event listener to a element that changes it background color
+
+const box = document.querySelector(".box");
+
+box.addEventListener("mouseover", ()=>{
+    box.style.backgroundColor = "blue";
+})
+
+// Task 4: Add a mouseout event to an element that reset its background color
+
+box.addEventListener("mouseout", ()=>{
+    box.style.backgroundColor = "aqua";
+})
+
+// Task 3: Keyboard Events
+
+// Task 5: Add a keydown event listener to an input field that logs the key pressed to the console
+
+const input = document.querySelector("#input");
+
+input.addEventListener("keydown" , (e)=>{
+    console.log(`Key pressed: ${e.key}`);
+})
+
+// Task 6: Add a keyup event listener to an input field that logs the key pressed to the console
+const input2 = document.querySelector("#input2");
+
+input2.addEventListener("keyup" , (e)=>{
+    console.log(`Key pressed: ${e.key}`);
+})
+
+// Activity 4: Form Events
+
+// Task 7: Add a submit event listener to a form that prevents that default submission and logs data to the console
+
+const form = document.querySelector("#form");
+
+form.addEventListener("submit", (e)=>{
+    e.preventDefault();
+    const input3 = document.querySelector("#input3");
+    console.log(input3.value)
+})
+
+// Activity 5: Event Delegation
+
+// Task 9: Add a click event listener to a list that logs the context of the clicked list them
+
+const ul = document.querySelector("ul");
+
+ul.addEventListener("click", (e)=>{
+    console.log(e.target.innerText)
+})
+
+// Task 10: Add an event listener to a parent element that listens for events from dynamically add child elements
+
+const li = document.createElement("li");
+li.id = "brown";
+li.innerText = "Brown";
+ul.appendChild(li);
+
+li.addEventListener("click", ()=>{
+    console.log("You are in ul tag.")
+})
+
+
+
+</script>
+</html>
+
